@@ -8,6 +8,7 @@ use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Actions\Jetstream\ConfirmsAdminPasswords;
 use App\Http\Controllers\Admin\Auth\AdminAuthenticationSessionController;
 use App\Http\Controllers\Admin\TwoFactorAuthenticatedSessionController;
 use App\Http\Requests\TwoFactorLoginRequest;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Laravel\Jetstream\ConfirmsPasswords;
 use Livewire\Livewire;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -35,7 +37,7 @@ class FortifyServiceProvider extends ServiceProvider
             AttemptToAuthenticate::class,
             RedirectIfTwoFactorAuthenticatable::class,
             TwoFactorAuthenticatedSessionController::class,
-            TwoFactorLoginRequest::class
+            TwoFactorLoginRequest::class,
         ])->needs(StatefulGuard::class) //? Needs an instance of StatefulGuard
             ->give(function(){
             return Auth::guard('admin'); //? Return the admin guard

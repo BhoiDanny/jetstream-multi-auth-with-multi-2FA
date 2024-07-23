@@ -15,7 +15,7 @@
 
             <x-validation-errors class="mb-4" />
 
-            <form method="POST" action="{{ route('two-factor.login') }}">
+            <form method="POST" action="{{ Auth::guard() === 'admin' ? route('two-factor.login') : route('admin.two-factor.login') }}">
                 @csrf
 
                 <div class="mt-4" x-show="! recovery">

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Actions\Fortify\UpdateAdminPassword;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Contracts\UpdatesUserPasswords;
 use Livewire\Component;
@@ -25,7 +26,7 @@ class UpdatePasswordForm extends Component
      * @param  \Laravel\Fortify\Contracts\UpdatesUserPasswords  $updater
      * @return void
      */
-    public function updatePassword(UpdatesUserPasswords $updater)
+    public function updatePassword(UpdateAdminPassword $updater)
     {
         $this->resetErrorBag();
 
